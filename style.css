@@ -37,5 +37,14 @@ section {
     padding: 10px;
     border-radius: 13px;
     display: flex;
-    justify-content: center;
+    justify-content: center;   
+}
+
+
+div {
+    background-color: #e5ff00;
+    padding: 10px;
+    text-align: center;
+    border-radius: 13px;
+    font-family: 'vhs-gothic';   
 }
