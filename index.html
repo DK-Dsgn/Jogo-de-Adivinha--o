@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+    <h1>Jogo de Adivinhação</h1>
+    <h2>Regras</h2>
+    <p>Neste jogo você deve adivinhar qual número aleatório de 0 a 100, que será gerado ao clicar no botão "Gerar número". Ao lado você receberá dicas sobre o número gerado para poder chutar digitando no campo de palpite.</p>
+    <p>Lembre-se, você possuí apenas 5 tentativas. Boa sorte!</p>
+    </main>
+<section>
+    <button type="button" onclick="gerar()">Gerar número</button>    
+
+    <input id="valor" type="number" placeholder="Digite seu chute">
+    <button type="button" onclick="chutar()">Chutar</button>
+    <button type="button" id="btn-reiniciar" style="display:none" onclick="reiniciar()">Jogar novamente</button>
+</section>
+    <p id="tentativas">Tentativas restantes: 5</p>
+
+    <p id="dica"></p>
+
+    <p id="mensagem"></p>
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
