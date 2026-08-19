@@ -1,12 +1,13 @@
 let numeroGerado = null;
-let tentativasRestantes = 5;
+let tentativasRestantes = 10;
+let historicoChutes = [];
 
 function gerar() {
     numeroGerado = Math.floor(Math.random() * 101);
-    tentativasRestantes = 5;
+    tentativasRestantes = 10;
 
 
-    document.getElementById("tentativas").textContent = "Tentativas restantes: 5";
+    document.getElementById("tentativas").textContent = "Tentativas restantes: 10";
     document.getElementById("dica").textContent = "";
     document.getElementById("mensagem").textContent = "";
     document.getElementById("btn-reiniciar").style.display = "none";
@@ -14,11 +15,12 @@ function gerar() {
     document.getElementById("valor").disabled = false;
 
     console.log("Número gerado:", numeroGerado);
+    historicoChutes = [];
+    document.getElementById("historico").textContent = "Nenhum chute foi dado ainda.";
 }
 
 function chutar() {
 
-    // verifica se o número foi gerado
     if (numeroGerado === null) {
         alert("Clique em 'Gerar número' primeiro!");
         return;
@@ -32,7 +34,7 @@ function chutar() {
     }
 
     if (chute === numeroGerado) {
-        document.getElementById("mensagem").textContent = `🎉 Parabéns! Você acertou! O número era ${numeroGerado}!`;
+        document.getElementById("mensagem").textContent = `Parabéns! Você acertou! O número era ${numeroGerado}!`;
         document.getElementById("dica").textContent = "";
         document.getElementById("btn-reiniciar").style.display = "block";
         document.getElementById("valor").disabled = true;
@@ -40,6 +42,7 @@ function chutar() {
     }
 
     tentativasRestantes--;
+    atualizarHistorico(chute);
     document.getElementById("tentativas").textContent = `Tentativas restantes: ${tentativasRestantes}`;
 
     if (tentativasRestantes === 0) {
@@ -59,13 +62,20 @@ function chutar() {
     document.getElementById("valor").value = "";
 }
 
+function atualizarHistorico(chute) {
+    historicoChutes.push(chute);
+    document.getElementById("historico").textContent = historicoChutes.join(" → ");
+}
+
 function reiniciar() {
     numeroGerado = null;
     tentativasRestantes = 5;
-    document.getElementById("tentativas").textContent = "Tentativas restantes: 5";
+    document.getElementById("tentativas").textContent = "Tentativas restantes: 10";
     document.getElementById("dica").textContent = "";
     document.getElementById("mensagem").textContent = "";
     document.getElementById("btn-reiniciar").style.display = "none";
     document.getElementById("valor").value = "";
     document.getElementById("valor").disabled = false;
+    historicoChutes = [];
+    document.getElementById("historico").textContent = "Nenhum chute foi dado ainda.";
 }
